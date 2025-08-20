@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Sono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
-import Footer from "./components/footer";
-
+import Footer from "./components/(footer)/footer";
 
 const sono = Sono({
   variable: "--font-sono-mono",
@@ -13,7 +12,7 @@ const sono = Sono({
 export const metadata: Metadata = {
   title: {
     template: `%s - ${process.env.APP_NAME || "Task Manager"}`,
-    default: process.env.APP_NAME || "Task Manager" 
+    default: process.env.APP_NAME || "Task Manager"
   },
   description: "Task manager App",
 };
@@ -29,8 +28,11 @@ export default function RootLayout({
         className={`${sono.className}`}
       >
         <Navbar />
-        {children}
+        <div className="p-10">
+          {children}
+        </div>
         <Footer />
+
       </body>
     </html>
   );

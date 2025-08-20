@@ -49,7 +49,7 @@ export default function Navbar() {
 
 
   return (
-    <div className="bg-white w-full px-10 py-2">
+    <div className="sticky top-0 z-50 bg-white w-full px-10 py-2 pb-4 border-b border-black">
       <nav>
         <ul className="grid grid-cols-3">
           <li>

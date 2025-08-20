@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
   const taskRepo = new TaskRepository();
   const taskService = new TaskService(taskRepo);
   try {
-    if (!task.id || typeof task.id !== "number") {
+    if ( typeof task.id !== "number" && task.id !== undefined) {
 
       return NextResponse.json({error: "Error on task id"}, {status: ERROR_CODES.BAD_REQUEST});
     };

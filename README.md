@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Requisitos 
 
-## Getting Started
+- git
+- pnpm
+- node.js (lts v22.12.0)
 
-First, run the development server:
+## Instrucciones
+
+Clonar repositorio
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ git clone https://github.com/ArtuKILL/task-manager.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+$ cd task-managerr
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Instalar paquetes de Node.js con pnpm
+```$bash
+$ pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Cambiar el nombre del archivo `example.env` a `.env` y ajustar los valores.
 
-## Learn More
+```bash
+$ mv example.env .env
+```
 
-To learn more about Next.js, take a look at the following resources:
+```.env
+APP_NAME="Task Manager"
+CONTACT_EMAIL="example@email.com"
+INSTAGRAM_URL="https://www.instagram.com/"
+GITHUB_URL="https://github.com/"
+DATABASE_URL="file:./tasks.db"
+API_URL="http://localhost:3000"
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Migrar base de datos con prisma.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```$bash
+$ pnpm prisma migrate dev --name init
+```
 
-## Deploy on Vercel
+Generar el Cliente de prisma
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```$bash
+$  pnpm prisma generate
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Iniciar en modo Desarrollador
+
+```$bash
+$ pnpm dev
+```
+
+Para visualizar y editar los datos de la base de datos.
+
+```$bash
+$ pnpm prisma studio
+```
+
+
+## Arquitectura
+
+Este repositorio en parte esta basado en (next-hexagonal-architecture)[https://github.com/kuzeofficial/next-hexagonal-architecture] 
+se buscó implentar buenas practica para la mantenibilidad del código, sin embargo, debido al tiempo no se implemento como realmente
+deberia ser, el código esta acoplado en ciertas clases y hay gran margen de mejora en el diseño de la mayoría de componentes. 
+
+## Alcance
+
+Este projecto solo crea y visualiza tareas, no se pueden ni editar, ni borrar.
+

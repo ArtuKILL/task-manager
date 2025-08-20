@@ -3,6 +3,7 @@ import { Sono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/(footer)/footer";
+import { Toaster } from "sonner";
 
 const sono = Sono({
   variable: "--font-sono-mono",
@@ -28,11 +29,11 @@ export default function RootLayout({
         className={`${sono.className}`}
       >
         <Navbar />
-        <div className="p-10">
+        <div className="p-10 pb-3">
           {children}
         </div>
         <Footer />
-
+        <Toaster closeButton richColors/>
       </body>
     </html>
   );

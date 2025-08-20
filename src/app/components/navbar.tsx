@@ -30,7 +30,7 @@ export default function Navbar() {
     },
     {
       name: "new task",
-      path: "/new"
+      path: "/tasks/new"
     },
 
   ];

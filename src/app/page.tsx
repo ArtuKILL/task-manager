@@ -22,7 +22,7 @@ export default async function Home() {
   ));
 
   return (
-    <div className="w-full h-screen overflow-hidden">
+    <div className="w-full max-h-max min-h-screen overflow-hidden">
       <div className='grid grid-cols-3 gap-3'>
         {taskElements}
       </div>

@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+  runtime = "nodejs"
+  moduleFormat = "esm"
+  generatedFileExtension = "ts"
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model TaskModel {
+  id Int @id @default(autoincrement())
+  title String
+  content String
+  state TaskModelState @default(PENDING)
+}
+
+enum TaskModelState {
+  PENDING
+  IN_PROGRESS
+  DONE
+}

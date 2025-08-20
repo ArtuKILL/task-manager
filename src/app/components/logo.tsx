@@ -2,7 +2,9 @@ import { Sono } from "next/font/google";
 import Image from "next/image"
 import Link from "next/link";
 
-const sono = Sono();
+const sono = Sono({
+  subsets: ["latin"]
+});
 
 export default function AppLogo() {
   return (

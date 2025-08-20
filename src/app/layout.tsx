@@ -13,7 +13,7 @@ const sono = Sono({
 export const metadata: Metadata = {
   title: {
     template: `%s - ${process.env.APP_NAME || "Task Manager"}`,
-    default: process.env.APP_NAME || "Task Manager"
+    default: process.env.APP_NAME || "Task Manager" 
   },
   description: "Task manager App",
 };

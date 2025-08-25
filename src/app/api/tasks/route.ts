@@ -1,5 +1,6 @@
 import { ERROR_CODES } from "@/app/lib/ErrorCodes";
 import { SUCCESS_CODES } from "@/app/lib/SuccessCodes";
+import getTaskService from "@/app/lib/TaskServicesSingleton";
 import { TaskService } from "@/app/modules/tasks/application/TaskService";
 import { Task } from "@/app/modules/tasks/domain/Task";
 import { TaskRepository } from "@/app/modules/tasks/infrastructure/TaskRepository";
@@ -7,8 +8,7 @@ import { PrismaClientKnownRequestError } from "@/generated/prisma/internal/prism
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
-  const taskRepo = new TaskRepository();
-  const taskService = new TaskService(taskRepo);
+  const taskService = getTaskService();
   const tasks: Task[] = await taskService.getAllTasks();
   const responseTasks = tasks.map(task => {
     return {
@@ -23,8 +23,7 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   const task = await request.json();
-  const taskRepo = new TaskRepository();
-  const taskService = new TaskService(taskRepo);
+  const taskService = getTaskService();
   try {
     if ( typeof task.id !== "number" && task.id !== undefined) {
 

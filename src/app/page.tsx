@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { Task, TaskState } from './modules/tasks/domain/Task';
+import { Task } from './modules/tasks/domain/Task';
 import TaskCard from './modules/tasks/components/TaskCard';
 import Link from 'next/link';
+import getTaskService from './lib/TaskServicesSingleton';
 
 export const metadata: Metadata = {
   title: `${process.env.APP_NAME || "Task Manager"} - Home`
@@ -9,11 +10,8 @@ export const metadata: Metadata = {
 
 export default async function Home() {
 
-  const response = await fetch(`${process.env.API_URL}/api/tasks`, {
-    method: "GET",
-  });
-
-  const tasks: Task[] = await response.json();
+  const taskService = getTaskService();
+  const tasks: Task[] = await taskService.getAllTasks();
 
   const taskElements = tasks.map(task => (
     <Link href={`/task/${task.id}`} key={`task-${task.id}`}>

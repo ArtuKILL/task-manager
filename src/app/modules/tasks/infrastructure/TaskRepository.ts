@@ -3,11 +3,18 @@ import { Task } from "../domain/Task";
 import { IRepository } from "./IRepository";
 import { Prisma, TaskModel } from "@/generated/prisma/client";
 import { ERROR_CODES } from "@/app/lib/ErrorCodes";
-import { PrismaClientValidationError } from "@/generated/prisma/internal/prismaNamespace";
 
 export class TaskRepository implements IRepository<Task, TaskModel> {
 
   private _client = Client;
+  private static _instance: TaskRepository;
+
+  public static get instance(): TaskRepository{
+    if (!TaskRepository._instance)  {
+      TaskRepository._instance = new TaskRepository();
+    }
+    return TaskRepository._instance;
+  }
 
   public async create(task: Task): Promise<TaskModel> {
     console.log("create");

@@ -1,4 +1,4 @@
-import { TASK_STATE, TaskState } from "../domain/Task";
+import { TaskState } from "../domain/Task";
 
 interface StateBadgeProps {
   state: TaskState;

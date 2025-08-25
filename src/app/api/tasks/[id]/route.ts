@@ -1,12 +1,12 @@
-import { TaskService } from "@/app/modules/tasks/application/TaskService";
+import getTaskService from "@/app/lib/TaskServicesSingleton";
 import { Task } from "@/app/modules/tasks/domain/Task";
-import { TaskRepository } from "@/app/modules/tasks/infrastructure/TaskRepository";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(_request: NextRequest, ctx: RouteContext<'/tasks/[id]'>) {
-  const {id} = await ctx.params;
-  const taskRepo = new TaskRepository();
-  const taskService = new TaskService(taskRepo);
+export async function GET(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  console.log(params);
+  const { id } = await params;
+  console.log(params);
+  const taskService = getTaskService();
   const taskId: number = parseInt(id);
   if (isNaN(taskId)) {
     return NextResponse.json({ error: "bad request" }, { status: 400 })

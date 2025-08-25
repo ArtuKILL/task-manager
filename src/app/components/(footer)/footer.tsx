@@ -1,4 +1,4 @@
-import { SiGithub, SiGmail, SiInstagram, SiLinkerd } from "@icons-pack/react-simple-icons";
+import { SiGithub, SiGmail, SiInstagram } from "@icons-pack/react-simple-icons";
 import AppLogo from "../logo";
 import { ReactElement } from "react";
 import FooterContent, { Term } from "./footerContent";
